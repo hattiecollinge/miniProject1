@@ -1,0 +1,302 @@
+
+<!doctype html>
+<html>
+<head>
+    <script src="https://unpkg.com/htmx.org@1.9.2" integrity="sha384-L6OqL9pRWyyFU3+/bjdSri+iIphTN/bvYyM37tICVyOJkWZLpP2vGn6VUEXgzg6h" crossorigin="anonymous"></script>
+    <script 
+            type="module" 
+            src="https://cdn.jsdelivr.net/npm/@microsoft/fast-components@2.16.0/dist/fast-components.min.js">            
+        </script>     
+    <script src="https://unpkg.com/htmx.org/dist/ext/client-side-templates.js"></script>
+    <script src="https://unpkg.com/mustache@latest"></script>
+</head>
+<body>
+    
+    <div hx-ext="client-side-templates">
+        <div  hx-get="http://localhost:5213/cats" hx-swap="innerHTML" hx-target="#results" mustache-template="CatFact" hx-trigger="click">
+           <div class="CatFact">
+             <div class = "CatFact-content">
+                <h4 class = "CatFact-title">click for cat fact</h4>
+             </div>
+           </div>
+            
+        </div>
+        <div id="results"></div>
+        <template id="CatFact">
+             <div class="CatBox">
+                 <div class = "CatBox-content">
+                     <h4 class = "CatBox-fact">{{fact}}</h4>
+                 </div>
+             </div>
+            </div>
+         </template>
+     </div>
+<style>
+    .CatBox { 
+    margin-top: 10rem;
+    display: flex;
+    max-width: auto;
+    height: 7.5rem;
+    margin: 0 ;
+    padding: ;
+    border-radius: 0.5rem;
+    background-color: rgb(91, 105, 148);
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+    }
+    .CatBox-content {
+        margin-top: auto;
+        margin-bottom: auto;
+        margin-left: 0.5rem;
+        padding-top: 0.25rem;
+    }
+    .CatBox-fact {
+        color: rgb(255, 255, 255);
+        font-size: 1.25rem;
+        line-height: 1.25;
+    }
+</style>
+<style>
+    .CatFact {
+        display:flex;
+    width: auto;
+    height: 5rem;
+    border-radius: 0.5rem;
+    background-color: lightblue;
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+    }
+    .CatFact-content {
+        margin-left: 0.5rem;
+        margin-top: 0.25rem;
+    }
+    .CatFact-title {
+        color: rgb(255, 255, 255);
+        font-size: 1.25rem;
+        line-height: 1.25;
+    }
+
+</style>
+
+
+<div hx-ext="client-side-templates">
+    
+    <div hx-get="http://localhost:5213/joke" hx-swap="innerHTML" hx-target="#Jresults" mustache-template="Joke" hx-trigger="click" >
+        <div class ="joke">
+            <div class = "joke-content">
+                <h4 class = "joke-button">click for joke</h4>
+            </div>
+        </div>
+    </div>
+
+    <div id="Jresults"></div>
+    <template id="Joke">
+        <div class = "joke-main">
+            <div class = "joke-main-content">
+                <h4 class="joke-main-setup">{{setup}}</h4>
+            </div>
+        </div>
+        <template id="Joke"> 
+            <div class = "joke2">
+                <div class = "joke2-content">
+                    <h4 class="joke2-punchline">{{punchline}}</h4>
+                </div>
+            </div>
+        </template>
+    </template>
+</div>
+<style>
+    .joke {
+        display:flex;
+    width: auto;
+    height: 5rem;
+    border-radius: 0.5rem;
+    background-color: lightblue;
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+    }
+    .joke-content {
+        margin-left: 0.5rem;
+        margin-top: 0.25rem;
+    }
+    .joke-button {
+        color: white;
+        font-size: 1.25rem;
+        line-height: 1.25;
+    }
+</style>
+<style>
+    .joke-main {
+        margin-top: 10rem;
+    display: flex;
+    max-width: auto;
+    height: 7.5rem;
+    margin: 0 ;
+    padding: ;
+    border-radius: 0.5rem;
+    background-color: rgb(91, 105, 148);
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+    }
+    .joke-main-content {
+        margin-top: auto;
+        margin-bottom: auto;
+        margin-left: 0.5rem;
+        padding-top: 0.25rem;
+    }
+    .joke-main-setup {
+        color: rgb(255, 255, 255);
+        font-size: 1.25rem;
+        line-height: 1.25;
+    }
+</style>
+<style>
+    .joke2 {
+        margin-top: 10rem;
+    display: flex;
+    max-width: auto;
+    height: 7.5rem;
+    margin: 0 ;
+    padding: ;
+    border-radius: 0.5rem;
+    background-color: rgb(91, 105, 148);
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+    }
+    .joke2-content {
+        margin-top: auto;
+        margin-bottom: auto;
+        margin-left: 0.5rem;
+        padding-top: 0.25rem;
+    }
+    .joke2-punchline {
+        color: rgb(255, 255, 255);
+        font-size: 1.25rem;
+        line-height: 1.25;
+    }
+</style>
+
+
+<div hx-ext="client-side-templates">
+    <div hx-get="http://localhost:5213/quote" hx-swap="innerHTML" hx-target="#Qresults" mustache-template="Quote" hx-trigger="click">
+        <div class="quote">
+            <div class="quote-content">
+                <h4 class="quote-click">click for quote</h4>
+            </div>
+        </div>
+    </div>
+    <div id="Qresults"></div>
+    <template id="Quote">
+        <div class="quote2">
+            <div class="quote2-content">
+                <h4 class="quote2-main">{{content}}</h4>
+            </div>
+        </div>
+    </template>
+</div>
+
+<style>
+    .quote {
+        display:flex;
+    width: auto;
+    height: 5rem;
+    border-radius: 0.5rem;
+    background-color: lightblue;
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+    }
+    .quote-content {
+        margin-top: auto;
+        margin-bottom: auto;
+        margin-left: 0.5rem;
+        padding-top: 0.25rem;   
+    }
+    .quote-click {
+        color: rgb(255, 255, 255);
+        font-size: 1.25rem;
+        line-height: 1.25;
+    }
+</style>
+<style>
+    .quote2 {
+        margin-top: 10rem;
+    display: flex;
+    max-width: auto;
+    height: 7.5rem;
+    margin: 0 ;
+    padding: ;
+    border-radius: 0.5rem;
+    background-color: rgb(91, 105, 148);
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+    }
+    .quote2-content {
+        margin-top: auto;
+        margin-bottom: auto;
+        margin-left: 0.5rem;
+        padding-top: 0.25rem;
+    }
+    .quote2-main {
+        color: rgb(255, 255, 255);
+        font-size: 1.25rem;
+        line-height: 1.25;   
+    }
+</style>
+
+<div hx-ext="client-side-templates">
+    <div hx-get="http://localhost:5213/foxes" hx-swap="innerHTML" hx-target="#Fresults" mustache-template="Fox" hx-trigger="click">
+        <div class="Fox">
+            <div class="Fox-content">
+                <h4 class="Fox-click">Click for Fox</h4>
+            </div>
+        </div>
+    </div>
+    <div id="Fresults"></div>
+    <template id="Fox">
+        <div class="FoxPic">
+            <div class="FoxPic-content">
+                <h4 class="FoxPic-Pic"><img src="{{image}}" alt="fox"></h4>
+            </div>
+        </div>
+    </template>
+</div>
+<style>
+    .Fox {
+        display:flex;
+    width: auto;
+    height: 5rem;
+    border-radius: 0.5rem;
+    background-color: lightblue;
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+    }
+    .Fox-content {
+        margin-top: auto;
+        margin-bottom: auto;
+        margin-left: 0.5rem;
+        padding-top: 0.25rem; 
+    }
+    .Fox-click {
+        color: rgb(255, 255, 255);
+        font-size: 1.25rem;
+        line-height: 1.25;
+    }
+</style>
+<style>
+    .FoxPic {
+        margin-top: 10rem;
+    display: flex;
+    max-width: auto;
+    height: auto;
+    margin: 0 ;
+    padding: ;
+    border-radius: 0.5rem;
+    background-color: rgb(91, 105, 148);
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+    }
+    .FoxPic-content {
+        margin-top: auto;
+        margin-bottom: auto;
+        margin-left: 0.5rem;
+        padding-top: 0.25rem;
+    }
+    .FoxPic-Pic {
+        color: rgb(255, 255, 255);
+        font-size: 1.25rem;
+        line-height: 1.25;  
+    }
+</style>
+</body>
+</html>

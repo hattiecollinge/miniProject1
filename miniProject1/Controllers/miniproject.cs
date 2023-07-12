@@ -2,6 +2,8 @@
 using static System.Net.WebRequestMethods;
 using System.Net.Http;
 using RestSharp;
+using miniProject1.services;
+using System.Reflection.Metadata.Ecma335;
 
 namespace miniProject1.Controllers
 {
@@ -11,16 +13,14 @@ namespace miniProject1.Controllers
         public string punchline { get; set; }
         public string type { get; set; }
     }
-    public class jokeController    : Controller
+    public class jokeController : Controller
     {
         [HttpGet("joke")]
-        public joke randomjoke()
+        public joke jokeSetup()
         {
-            RestSharp.RestClient client = new();
-            string URL = "https://official-joke-api.appspot.com/random_joke";
-             RestRequest restRequest = new RestRequest(URL);
-            var joke = client.Get<joke>(restRequest);
-            return joke;
+            var jokeSet = ApiService.GetData<joke>("https://official-joke-api.appspot.com/random_joke");
+            return jokeSet;
+
         }
     }
 }

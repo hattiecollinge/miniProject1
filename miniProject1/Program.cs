@@ -14,6 +14,18 @@ namespace miniProject1
             // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();
+            builder.Services.AddCors(options => {
+
+                options.AddDefaultPolicy(policy =>
+                {
+                    policy.AllowAnyHeader().AllowAnyMethod();
+                    policy.SetIsOriginAllowed(origin =>
+                    {                        
+                        return true;
+                    });
+                });
+            
+            });
 
             var app = builder.Build();
 
@@ -24,10 +36,8 @@ namespace miniProject1
                 app.UseSwaggerUI();
             }
 
-            app.UseHttpsRedirection();
-
             app.UseAuthorization();
-
+            app.UseCors();
             app.MapControllers();
 
             app.Run();

@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using miniProject1.services;
 using RestSharp;
 
 namespace api2.Controllers
@@ -14,10 +15,7 @@ namespace api2.Controllers
         [HttpGet("cats")]
         public cats catfact()
         {
-            RestSharp.RestClient client = new();
-            string URL = "https://catfact.ninja/fact?max_length=140";
-            RestRequest restrequest = new RestRequest(URL);
-            var cat = client.Get<cats>(restrequest);
+            var cat = ApiService.GetData<cats>("https://catfact.ninja/fact?max_length=140");
             return cat;
         }
     }
